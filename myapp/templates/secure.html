@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Secure Page</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Ласкаво просимо, {{ user }}!</h2>
+    <p>Ви успішно увійшли до захищеної сторінки.</p>
+    
+    <a href="/logout">
+        <button>Вийти</button>
+    </a>
+</div>
+
+</body>
+</html>

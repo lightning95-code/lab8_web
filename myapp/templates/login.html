@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Логін</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Вхід у систему</h2>
+
+    <form action="/auth/" method="POST"> 
+        {% csrf_token %}
+        <input type="text" name="email" placeholder="Email" required>
+
+        <div class="password-wrapper">
+            <input type="password" name="password" id="password" placeholder="Пароль" required>
+            <span class="toggle-eye" id="toggleEye">🙈</span> <!-- закрита обезьянка -->
+        </div>
+
+        <button type="submit">Увійти</button>
+
+        {% if errors %} <!--тег шаблону для лог конструкцій-->
+            <div class="error-container">
+                {% for err in errors %}
+                    <div class="error-message">{{ err }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </form>
+</div>
+
+<script>
+const pwd = document.getElementById('password');
+const toggleEye = document.getElementById('toggleEye');
+
+toggleEye.addEventListener('click', () => {
+    if (pwd.type === 'password') {
+        pwd.type = 'text';
+        toggleEye.textContent = '🐵'; // показати пароль
+    } else {
+        pwd.type = 'password';
+        toggleEye.textContent = '🙈'; // приховати пароль
+    }
+});
+</script>
+
+</body>
+</html>
