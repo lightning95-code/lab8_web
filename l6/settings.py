@@ -122,7 +122,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False 
+DEBUG = True 
 
 # Додаємо додаткову директорію для пошуку статичних файлів
 STATICFILES_DIRS = [
